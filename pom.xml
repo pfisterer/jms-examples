@@ -12,14 +12,10 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
-		<!-- The netty.io version to use -->
-		<netty.version>4.0.15.Final</netty.version>
-
-		<apache.apollo.version>1.7</apache.apollo.version>
 	</properties>
 
 	<dependencies>
+		<!-- Apache Apollo Embedded Configuration Helper -->
 		<dependency>
 			<groupId>de.farberg.apollo</groupId>
 			<artifactId>apache-apollo-embedded</artifactId>
@@ -78,7 +74,7 @@
 		<dependency>
 			<groupId>de.uniluebeck.itm.util</groupId>
 			<artifactId>logging</artifactId>
-			<version>0.7</version>
+			<version>RELEASE</version>
 		</dependency>
 
 	</dependencies>
