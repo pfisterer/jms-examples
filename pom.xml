@@ -1,0 +1,220 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>de.farberg.apollo</groupId>
+	<artifactId>apache-apollo-examples</artifactId>
+	<version>0.1-SNAPSHOT</version>
+	<name></name>
+
+	<packaging>jar</packaging>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+		<!-- The netty.io version to use -->
+		<netty.version>4.0.15.Final</netty.version>
+
+		<apache.apollo.version>1.7</apache.apollo.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>de.farberg.apollo</groupId>
+			<artifactId>apache-apollo-embedded</artifactId>
+			<version>0.1-SNAPSHOT</version>
+		</dependency>
+
+		<!-- JMS API -->
+		<dependency>
+			<groupId>org.apache.geronimo.specs</groupId>
+			<artifactId>geronimo-jms_1.1_spec</artifactId>
+			<version>1.1</version>
+		</dependency>
+
+		<!-- Active MQ Client (including support for legacy versions) -->
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-client</artifactId>
+			<version>5.11.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-openwire-legacy</artifactId>
+			<version>5.11.1</version>
+		</dependency>
+
+		<!-- STOMP client -->
+		<dependency>
+			<groupId>asia.stampy</groupId>
+			<artifactId>stampy-NETTY-client-server-RI</artifactId>
+			<version>1.0-RELEASE</version>
+		</dependency>
+
+		<!-- Logging -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.5</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jul-to-slf4j</artifactId>
+			<version>1.7.7</version>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.7.7</version>
+		</dependency>
+
+		<!-- Some little helpers -->
+		<dependency>
+			<groupId>de.uniluebeck.itm.util</groupId>
+			<artifactId>logging</artifactId>
+			<version>0.7</version>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<plugins>
+
+			<!-- Set Java source code level -->
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+
+
+			<!-- Simple execution from the command line using 'mvn exec:java' -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.2.1</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>java</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<mainClass>de.farberg.apollo.OpenWire</mainClass>
+				</configuration>
+			</plugin>
+
+			<!-- Attach sources -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- License formatter: mvn license:check / mvn license:format -->
+			<plugin>
+				<groupId>com.mycila.maven-license-plugin</groupId>
+				<version>1.9.0</version>
+				<artifactId>maven-license-plugin</artifactId>
+				<configuration>
+					<header>src/etc/license.txt</header>
+
+					<strictCheck>true</strictCheck>
+
+					<excludes>
+						<exclude>.git/**</exclude>
+						<exclude>**/*.html</exclude>
+						<exclude>.gitignore</exclude>
+						<exclude>README*</exclude>
+						<exclude>**/*.json</exclude>
+						<exclude>**/bower_components/**</exclude>
+						<exclude>.idea</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+
+		</plugins>
+
+	</build>
+
+	<distributionManagement>
+		<repository>
+			<id>farberg</id>
+			<name>Farberg Releases</name>
+			<url>http://nexus.farberg.de/content/repositories/releases/</url>
+		</repository>
+		<snapshotRepository>
+			<id>farberg</id>
+			<name>Farberg Releases</name>
+			<url>http://nexus.farberg.de/content/repositories/snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+	<repositories>
+
+		<repository>
+			<id>farberg-releases</id>
+			<url>http://nexus.farberg.de/content/repositories/releases/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>farberg-snapshots</id>
+			<url>http://nexus.farberg.de/content/repositories/snapshots/</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+
+		<repository>
+			<id>itm-maven-repository-releases</id>
+			<url>http://maven.itm.uni-luebeck.de/content/repositories/releases/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+
+		<repository>
+			<snapshots>
+				<enabled>false</enabled>
+				<updatePolicy>never</updatePolicy>
+			</snapshots>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>interval:10080</updatePolicy>
+			</releases>
+			<id>jboss.release</id>
+			<name>JBoss releases</name>
+			<url>https://repository.jboss.org/nexus/content/groups/public/</url>
+		</repository>
+
+	</repositories>
+
+</project>

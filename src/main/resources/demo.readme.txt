@@ -1,0 +1,6 @@
+Demo files for authentication
+
+Users:
+demo, password: demo
+demo1, password: demo1
+
