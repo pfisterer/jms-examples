@@ -1,4 +1,4 @@
-package de.farberg.apollo.examples;
+package jmsdemo;
 
 import javax.jms.Connection;
 import javax.jms.Destination;
@@ -9,20 +9,18 @@ import javax.jms.Session;
 import javax.jms.TextMessage;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
-import org.apache.activemq.apollo.broker.Broker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import de.farberg.apollo.examples.util.CommonStuff;
-import de.farberg.apollo.factory.ApolloEmbeddedFactory;
+import jmsdemo.util.CommonStuff;
 
 public class RequestResponse {
 	public static void main(String[] args) throws Exception {
-		Broker broker = ApolloEmbeddedFactory.start(CommonStuff.setup().openWire(8889).build());
+		// Create a connection factory
+		ActiveMQConnectionFactory connectionFactory = CommonStuff.setupAndGetConnectionFactory(args);
 		Logger log = LoggerFactory.getLogger(OpenWire.class);
 
-		// Create a connection
-		ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory("demo1", "demo1", "tcp://localhost:8889");
+		// Startup
 		Connection connection = connectionFactory.createConnection();
 		connection.start();
 
@@ -80,7 +78,5 @@ public class RequestResponse {
 		responseConsumer.close();
 		session.close();
 		connection.close();
-
-		CommonStuff.teardownAndExit(broker);
 	}
 }

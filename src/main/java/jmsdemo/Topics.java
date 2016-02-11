@@ -1,4 +1,4 @@
-package de.farberg.apollo.examples;
+package jmsdemo;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -11,20 +11,18 @@ import javax.jms.TextMessage;
 import javax.jms.Topic;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
-import org.apache.activemq.apollo.broker.Broker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import de.farberg.apollo.examples.util.CommonStuff;
-import de.farberg.apollo.factory.ApolloEmbeddedFactory;
+import jmsdemo.util.CommonStuff;
 
 public class Topics {
 	public static void main(String[] args) throws Exception {
-		Broker broker = ApolloEmbeddedFactory.start(CommonStuff.setup().openWire(8889).build());
+		// Create a connection factory
+		ActiveMQConnectionFactory connectionFactory = CommonStuff.setupAndGetConnectionFactory(args);
 		Logger log = LoggerFactory.getLogger(OpenWire.class);
 
 		// Create a connection
-		ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory("demo1", "demo1", "tcp://localhost:8889");
 		Connection connection = connectionFactory.createConnection();
 		connection.start();
 
@@ -69,6 +67,7 @@ public class Topics {
 			Thread.sleep(100);
 		}
 
+		// Cleanup resources
 		consumers.forEach(consumer -> {
 			try {
 				consumer.close();
@@ -78,6 +77,5 @@ public class Topics {
 		session.close();
 		connection.close();
 
-		CommonStuff.teardownAndExit(broker);
 	}
 }

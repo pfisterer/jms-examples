@@ -3,8 +3,8 @@
 
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>de.farberg.apollo</groupId>
-	<artifactId>apache-apollo-examples</artifactId>
+	<groupId>de.farberg.jms</groupId>
+	<artifactId>jms-examples</artifactId>
 	<version>0.1-SNAPSHOT</version>
 	<name></name>
 
@@ -15,13 +15,6 @@
 	</properties>
 
 	<dependencies>
-		<!-- Apache Apollo Embedded Configuration Helper -->
-		<dependency>
-			<groupId>de.farberg.apollo</groupId>
-			<artifactId>apache-apollo-embedded</artifactId>
-			<version>0.1-SNAPSHOT</version>
-		</dependency>
-
 		<!-- JMS API -->
 		<dependency>
 			<groupId>org.apache.geronimo.specs</groupId>
@@ -39,13 +32,6 @@
 			<groupId>org.apache.activemq</groupId>
 			<artifactId>activemq-openwire-legacy</artifactId>
 			<version>5.11.1</version>
-		</dependency>
-
-		<!-- STOMP client -->
-		<dependency>
-			<groupId>asia.stampy</groupId>
-			<artifactId>stampy-NETTY-client-server-RI</artifactId>
-			<version>1.0-RELEASE</version>
 		</dependency>
 
 		<!-- Logging -->
@@ -150,41 +136,7 @@
 
 	</build>
 
-	<distributionManagement>
-		<repository>
-			<id>farberg</id>
-			<name>Farberg Releases</name>
-			<url>http://nexus.farberg.de/content/repositories/releases/</url>
-		</repository>
-		<snapshotRepository>
-			<id>farberg</id>
-			<name>Farberg Releases</name>
-			<url>http://nexus.farberg.de/content/repositories/snapshots/</url>
-		</snapshotRepository>
-	</distributionManagement>
-
 	<repositories>
-
-		<repository>
-			<id>farberg-releases</id>
-			<url>http://nexus.farberg.de/content/repositories/releases/</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-		<repository>
-			<id>farberg-snapshots</id>
-			<url>http://nexus.farberg.de/content/repositories/snapshots/</url>
-			<releases>
-				<enabled>false</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
 
 		<repository>
 			<id>itm-maven-repository-releases</id>
