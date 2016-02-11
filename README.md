@@ -1,4 +1,4 @@
-Simple Apache Apollo Examples
+Simple JMS + Maven Examples
 =============
 
 Requirements
