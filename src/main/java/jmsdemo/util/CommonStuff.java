@@ -3,16 +3,12 @@ package jmsdemo.util;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.slf4j.bridge.SLF4JBridgeHandler;
 
-import de.uniluebeck.itm.util.logging.LogLevel;
-import de.uniluebeck.itm.util.logging.Logging;
-
 public class CommonStuff {
 
 	public static ActiveMQConnectionFactory setupAndGetConnectionFactory(String[] args) {
 		// Logging configuration
 		SLF4JBridgeHandler.removeHandlersForRootLogger(); // (since SLF4J 1.6.5)
 		SLF4JBridgeHandler.install();
-		Logging.setLoggingDefaults(LogLevel.DEBUG);
 
 		// Parse command line params
 		if (args.length != 3) {

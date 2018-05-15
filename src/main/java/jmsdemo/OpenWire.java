@@ -41,7 +41,7 @@ public class OpenWire {
 			TextMessage message = session.createTextMessage("Message #" + i);
 			log.debug("Sending message #" + i);
 			producer.send(message);
-			Thread.sleep(100);
+			Thread.sleep(300);
 		}
 
 		producer.close();

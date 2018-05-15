@@ -19,7 +19,8 @@ import jmsdemo.util.CommonStuff;
 public class Topics {
 	public static void main(String[] args) throws Exception {
 		// Create a connection factory
-		ActiveMQConnectionFactory connectionFactory = CommonStuff.setupAndGetConnectionFactory(args);
+		ActiveMQConnectionFactory connectionFactory = 
+				CommonStuff.setupAndGetConnectionFactory(args);
 		Logger log = LoggerFactory.getLogger(OpenWire.class);
 
 		// Create a connection

@@ -56,13 +56,6 @@
 			<version>1.7.7</version>
 		</dependency>
 
-		<!-- Some little helpers -->
-		<dependency>
-			<groupId>de.uniluebeck.itm.util</groupId>
-			<artifactId>logging</artifactId>
-			<version>RELEASE</version>
-		</dependency>
-
 	</dependencies>
 
 	<build>
@@ -137,18 +130,7 @@
 	</build>
 
 	<repositories>
-
-		<repository>
-			<id>itm-maven-repository-releases</id>
-			<url>http://maven.itm.uni-luebeck.de/content/repositories/releases/</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-
+	
 		<repository>
 			<snapshots>
 				<enabled>false</enabled>
